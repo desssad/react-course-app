@@ -14,19 +14,49 @@ import React, { useState } from 'react';
         console.log('From Costs component');
     }
 
+    const filteredCost = props.costs.filter(cost=>
+        { return cost.date.getFullYear().toString() === selectedYear;}
+    );
+
+    let contextCost = <p>No one goods in this year...</p>
+
+    if(filteredCost.length > 0){
+        contextCost = filteredCost.map((cost) => (
+            <CostItem 
+                key={cost.id}
+                date={cost.date} 
+                description={cost.description} 
+                amount={cost.amount}
+            />
+        ))
+    }
+
     return (
         <div>
             <Card className='costs'>
                 <CostFilter year={selectedYear} onChangeYear={yearChangeHandler}/>
+                {contextCost}
+                {/* {filteredCost.length === 0 ? <p>No one goods in this year...</p> : 
+                    filteredCost.map((cost) => (
+                        <CostItem 
+                            key={cost.id}
+                            date={cost.date} 
+                            description={cost.description} 
+                            amount={cost.amount}
+                        />
+                    ))
+                } */}
 
-                {props.costs.map((cost) => (
+                {/* {filteredCost.map((cost) => (
                     <CostItem 
-                    key={cost.id}
-                    date={cost.date} 
-                    description={cost.description} 
-                    amount={cost.amount}
+                        key={cost.id}
+                        date={cost.date} 
+                        description={cost.description} 
+                        amount={cost.amount}
                     />
-                ))}
+                ))} */}
+
+
                 {/* <CostItem 
                     date={props.costs[0].date } 
                     description={props.costs[0].description } 
