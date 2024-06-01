@@ -31,8 +31,6 @@ const App = () => {
     setCosts(prevCosts=> {
       return [cost, ...prevCosts]
     });
-    // console.log(cost);
-    // console.log('App component');
   }
 
   return (
@@ -44,5 +42,3 @@ const App = () => {
 }
 
 export default App;
-
-//5:01:12

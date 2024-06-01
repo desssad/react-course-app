@@ -56,15 +56,10 @@ const CostForm = (props) => {
             date: new Date(inputDate)
         };
 
-        console.log('Before:',costData);
-
         props.onSaveCostData(costData);
-
-        console.log('After', costData);
         setInputName('');
         setInputAmount('');
         setInputDate('');
-
     };
 
     return (
@@ -88,13 +83,13 @@ const CostForm = (props) => {
                 <div className="new-cost__control">
                     <label>Date</label>
                     <input 
-                        type="date" min='2019-01-01' max='2024-01-01' 
-                        // value={inputName}
+                        type="date" min='2019-01-01' max='2025-01-01' 
                         onChange={dateChangeHandler}/>
                 </div>
 
                 <div className="new-cost__actions">
                     <button type="submit">Add expense</button>
+                    <button type="button" onClick={props.onCancel}>Cancel</button>
                 </div>
             </div>
         </form>
